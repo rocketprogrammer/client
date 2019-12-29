@@ -75,7 +75,7 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 
 // Discord Rich Presence
-const client = require('discord-rich-presence')('648318276463755310');
+const client = require('discord-rich-presence')('DISCORDCLIENTID');
  
 client.updatePresence({
   state: 'cozypenguin.net',
