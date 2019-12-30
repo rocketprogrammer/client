@@ -1,6 +1,27 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+
+var deleteChromeCache = function() {
+  var chromeCacheDir = path.join(app.getPath('userData'), 'Cache'); 
+  if(fs.existsSync(chromeCacheDir)) {
+      var files = fs.readdirSync(chromeCacheDir);
+      for(var i=0; i<files.length; i++) {
+          var filename = path.join(chromeCacheDir, files[i]);
+          if(fs.existsSync(filename)) {
+              try {
+                  fs.unlinkSync(filename);
+              }
+              catch(e) {
+                  console.log(e);
+              }
+          }
+      }
+  }
+};
+var fs = require('fs');
+deleteChromeCache();
+
 // Specify flash path, supposing it is placed in the same directory with main.js.
 //let pluginName = './pepflashplayer.dll'
 let pluginName
