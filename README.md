@@ -1,45 +1,26 @@
-# electron-quick-start
+# Cozy Penguin Client
+This is the web-based client for Cozy Penguin, solving the problem of Flash ending support in 2020, resulting in obtaining and using Flash harder. This client has many functions, including:
+- Automatically clearing the users' cache when the application is launched (parties and features update instantly!)
+- Discord Rich Presence support. Have a shiny Discord status when playing
+- Embedded (Pepper) Flash Player. There's no need to install Flash manually.
 
-**Clone and run for a quick way to see Electron in action.**
+This is heavily inspired by Penguin World's client. We'd also reccommend creating a new subdomain eg (https://client.cozypenguin.net) so that Flash is fullscreen.
+# Installation
+`git clone https://github.com/Cozy-Penguin/client`
 
-This is a minimal Electron application based on the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) within the Electron documentation.
+`npm install`
 
-**Use this app along with the [Electron API Demos](https://electronjs.org/#get-started) app for API code examples to help you get started.**
+`npm install discord-rich-presence`
 
-A basic Electron application needs just these files:
+`npm install electron-packager -g`
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
+Customise the files to your liking then test it with
 
-You can learn more about each of these components within the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start).
+`npm start` (be aware that flash will not load until you publish your game)
+**Publishing**
 
-## To Use
+`electron-packager . --overwrite --disable-http-cache --platform=win32 --arch=ia32 --icon=favicon.ico --prune=true --out=release-builds --version-string.cozy-client=1.0.0 --version-string.Cozy Penguin's client.=1.0.0 --version-string.ProductName="Cozy Penguin"`
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-
-```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies
-npm install
-# Run the app
-npm start
-```
-
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
-
-## Resources for Learning Electron
-
-- [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
-- [electronjs.org/community#boilerplates](https://electronjs.org/community#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/simple-samples](https://github.com/electron/simple-samples) - small applications with ideas for taking them further
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
-
-## License
-
-[CC0 1.0 (Public Domain)](LICENSE.md)
+Then open the folder `release-builds`, followed by `client.=1.0.0-win32-ia32` - then run the .exe!
+# License
+Please attribute AltoDev and leave all attribution in it's original state.
