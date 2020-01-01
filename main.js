@@ -1,26 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
-
-var deleteChromeCache = function() {
-  var chromeCacheDir = path.join(app.getPath('userData'), 'Cache'); 
-  if(fs.existsSync(chromeCacheDir)) {
-      var files = fs.readdirSync(chromeCacheDir);
-      for(var i=0; i<files.length; i++) {
-          var filename = path.join(chromeCacheDir, files[i]);
-          if(fs.existsSync(filename)) {
-              try {
-                  fs.unlinkSync(filename);
-              }
-              catch(e) {
-                  console.log(e);
-              }
-          }
-      }
-  }
-};
 var fs = require('fs');
-deleteChromeCache();
 
 // Specify flash path, supposing it is placed in the same directory with main.js.
 //let pluginName = './pepflashplayer.dll'
@@ -43,7 +24,9 @@ app.commandLine.appendSwitch('ppapi-flash-path', path.join(__dirname, pluginName
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-
+function clearCache() {
+  mainWindow.webContents.session.clearCache();
+}
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -62,6 +45,7 @@ function createWindow () {
   // and load the index.html of the app.
   //mainWindow.loadFile('index.html')
   mainWindow.loadURL('https://client.cozypenguin.net')
+  clearCache();
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
