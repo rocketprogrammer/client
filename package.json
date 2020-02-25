@@ -1,26 +1,37 @@
 {
-  "name": "cozy-client",
-  "version": "1.0.0",
-  "description": "The official Cozy Penguin client.",
+  "name": "cozydesktop",
+  "version": "1.1.0",
+  "description": "Desktop client for cozypenguin.net",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder build --win --publish never",
+    "build-mac": "electron-builder build --mac --publish never",
+    "appveyor-build": "electron-builder build --win --publish onTagOrDraft"
   },
-  "repository": "https://github.com/cozy-penguin/client",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
+  "bugs": {
+    "url": "https://github.com/cozypenguin/desktop/issues"
+  },
+  "homepage": "https://github.com/cozypenguin/desktop#readme",
+  "repository": "https://github.com/cozypenguin/desktop",
   "author": "AltoDev",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^4.2.6"
+    "electron": "^6.1.2",
+    "electron-builder": "^22.2.0",
+    "electron-is-dev": "^1.1.0"
   },
   "dependencies": {
-    "discord-rich-presence": "0.0.8",
-    "electron-simple-updater": "^1.5.0"
+    "discord-rpc": "^3.1.0",
+    "electron-is-dev": "^1.1.0",
+    "electron-updater": "^4.2.0"
+  },
+  "build": {
+    "appId": "net.cozypenguin.desktop",
+    "productName": "Cozy Penguin Desktop",
+    "asar": "false",
+    "win": {
+      "publish": "github"
+    }
   }
 }
