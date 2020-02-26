@@ -1,6 +1,6 @@
 {
   "name": "cozydesktop",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Desktop client for cozypenguin.net",
   "main": "main.js",
   "scripts": {
@@ -10,10 +10,10 @@
     "appveyor-build": "electron-builder build --win --publish onTagOrDraft"
   },
   "bugs": {
-    "url": "https://github.com/cozypenguin/desktop/issues"
+    "url": "https://github.com/cozy-penguin/client/issues"
   },
-  "homepage": "https://github.com/cozypenguin/desktop#readme",
-  "repository": "https://github.com/cozypenguin/desktop",
+  "homepage": "https://github.com/cozy-penguin/client#readme",
+  "repository": "https://github.com/cozy-penguin/client",
   "author": "AltoDev",
   "license": "CC0-1.0",
   "devDependencies": {
@@ -27,7 +27,7 @@
     "electron-updater": "^4.2.0"
   },
   "build": {
-    "appId": "net.cozypenguin.desktop",
+    "appId": "com.cozypenguin.desktop",
     "productName": "Cozy Penguin Desktop",
     "asar": "false",
     "win": {

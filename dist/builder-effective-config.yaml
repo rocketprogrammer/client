@@ -1,0 +1,9 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.cozypenguin.desktop
+productName: Cozy Penguin Desktop
+asar: false
+win:
+  publish: github
+electronVersion: 6.1.7
