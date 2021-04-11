@@ -1,19 +1,34 @@
-/*// All of the Node.js APIs are available in the preload process.
-// It has the same sandbox as a Chrome extension.
-window.addEventListener('DOMContentLoaded', () => {
-  const replaceText = (selector, text) => {
-    const element = document.getElementById(selector)
-    if (element) element.innerText = text
-  }
+const {ipcRenderer} = require('electron');
+let checkExist;
 
-  for (const type of ['chrome', 'node', 'electron']) {
-    replaceText(`${type}-version`, process.versions[type])
-  }
-})
-*/
+ipcRenderer.on('muted', (event, data) => {
+	localStorage.muted = data;
+});
 
-function redirect(){window.location.href = 'https://play.rocketprogrammer.me';}
-window.addEventListener('DOMContentLoaded', () => {
-  var url = window.location.href;
-    if(url.includes('play.rocketprogrammer.me') == false){redirect();}
-  });
+ipcRenderer.on('theme', (event, data) => {
+	localStorage.theme = data;
+	const game = document.getElementById('game');
+	game.setDarkMode()
+});
+
+window.addEventListener('load', (event) => {
+	checkExist = setInterval(() => {
+		if(game.setDarkMode) { 
+			clearInterval(checkExist)
+		    load()
+		}
+	}, 100);
+});
+function load(){
+	if(localStorage.muted == undefined){
+		localStorage.muted = false;
+		localStorage.theme = 'dark';
+	}
+	ipcRenderer.sendSync('load:data', localStorage.muted, localStorage.theme)
+}
+function loadSettings() { 
+	const game = document.getElementById('game');
+	if(localStorage.theme === 'dark'){
+		game.setDarkMode()
+	}
+}

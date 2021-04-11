@@ -1,9 +1,0 @@
-directories:
-  output: dist
-  buildResources: build
-appId: com.clubpenguin.desktop
-productName: Club Penguin Desktop
-asar: false
-win:
-  publish: github
-electronVersion: 6.1.7

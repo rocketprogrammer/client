@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Club Penguin</title>
+    <style>
+      /* Define the main wrapper style */
+      .LoaderWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+
+        box-sizing: border-box;
+        background-color: black;
+      }
+
+      .LoaderContent {
+        color: white;
+		font-family: Arial;
+      }
+		.loader {
+		  border: 5px solid #f3f3f3; /* Light grey */
+		  border-top: 5px solid #3498db; /* Blue */
+		  border-radius: 50%;
+		  width: 50px;
+		  height: 50px;
+		  animation: spin 2s linear infinite;
+		  display: block;
+		}
+		@keyframes spin {
+		  0% { transform: rotate(0deg); }
+		  100% { transform: rotate(360deg); }
+		}
+	  
+    </style>
+  </head>
+  <body>
+	
+    <div class="LoaderWrapper">
+      <div class="LoaderContent">
+		<div class="loader"></div>
+        Loading...
+      </div>
+    </div>
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js');
+    </script>
+  </body>
+</html>
