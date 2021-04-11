@@ -1,8 +1,8 @@
 version: 1.0.0
 files:
-  - url: Cozy-Penguin-Desktop-Setup-1.0.0.exe
-    sha512: iul5xBa1BtUMt8kdXpYoH1dQFO4Ya4r9jdfB2hZqGFeRqTnI3E9XXfESDmBfQ40WxL8Sfu1B+UdlAW/EB3D8ew==
-    size: 76161249
-path: Cozy-Penguin-Desktop-Setup-1.0.0.exe
-sha512: iul5xBa1BtUMt8kdXpYoH1dQFO4Ya4r9jdfB2hZqGFeRqTnI3E9XXfESDmBfQ40WxL8Sfu1B+UdlAW/EB3D8ew==
-releaseDate: '2020-02-25T21:58:37.323Z'
+  - url: Club-Penguin-Desktop-Setup-1.0.0.exe
+    sha512: eFfei4ngS6E+xPeQ0UKZW/J11LzxceBTD8VdJ46eGLIcVauCherjdYibruWXCag+DVzfEeU5uV17j5A7REx54g==
+    size: 76517608
+path: Club-Penguin-Desktop-Setup-1.0.0.exe
+sha512: eFfei4ngS6E+xPeQ0UKZW/J11LzxceBTD8VdJ46eGLIcVauCherjdYibruWXCag+DVzfEeU5uV17j5A7REx54g==
+releaseDate: '2021-04-11T17:52:53.878Z'
