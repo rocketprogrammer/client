@@ -30,7 +30,7 @@ const {autoUpdater} = require("electron-updater");
 const DiscordRPC = require('discord-rpc');
 
 const aboutMessage = `Club Penguin Client v${app.getVersion()}
-Based off the Club Penguin client.`;
+Based off the Coastal Freeze client.`;
 
 /**
  * This switch case will return the correct DLL/so/plugin for the app
