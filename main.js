@@ -60,7 +60,7 @@ function createWindow () {
   });
   rpc.login({ clientId }).catch(console.error);
 
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function () {
     mainWindow = null
