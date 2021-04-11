@@ -223,9 +223,12 @@ let mainWindow;
 function createWindow () {
   // Create the browser mainWindow.
   mainWindow = new BrowserWindow({
+    width: 1280,
+    height: 720,
     useContentSize: true,
     show: false,
     title: "Club Penguin",
+    icon: __dirname + '/icons/windows/icon.ico',
     webPreferences: {
 	  preload: path.join(__dirname, './preload.js'),
       plugins: true,
