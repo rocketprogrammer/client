@@ -104,8 +104,8 @@ function createLoadingScreen(){
   
   loadingScreen = new BrowserWindow({
       /// define width and height for the mainWindow
-      width: 200,
-      height: 300,
+      width: 1280,
+      height: 720,
       /// remove the mainWindow frame, so it will become a frameless mainWindow
       frame: false,
       /// and set the transparency, to remove any mainWindow background color
