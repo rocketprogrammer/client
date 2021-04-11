@@ -3,4 +3,4 @@ This is the desktop client for Club Penguin. This client has many functions, inc
 - Discord Rich Presence support. Have a shiny Discord status when playing
 - Embedded (Pepper) Flash Player. There's no need to install Flash manually.
 
-Based on https://github.com/imaltodev/client
+Based on https://github.com/AllinolCP/Coastal-Freeze
