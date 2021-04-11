@@ -71,14 +71,13 @@ switch (process.platform) {
 app.commandLine.appendSwitch('ppapi-flash-path', path.join(__dirname, pluginName));
 app.commandLine.appendSwitch("disable-http-cache");
 
-
 /**
  * Activates Discord Rich Presence
  * @returns {void}
  */
 let rpc;
 function activateRPC() { 
-  DiscordRPC.register('792072685790167070');
+  DiscordRPC.register('830823841516879892');
   rpc = new DiscordRPC.Client({
 	  transport: 'ipc'
   }); 
@@ -92,7 +91,7 @@ function activateRPC() {
     });
   });
   rpc.login({
-	clientId: '792072685790167070' 
+	clientId: '830823841516879892' 
   }).catch(console.error);
 }
 /**
