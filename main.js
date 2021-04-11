@@ -43,13 +43,13 @@ function createWindow () {
 
   mainWindow.setMenu(null);
   clearCache();
-  mainWindow.loadURL('https://play.cozypenguin.net/desktop');
+  mainWindow.loadURL('https://old.rocketprogrammer.me');
 
   // RICH PRESENCE START
-  const clientId = '648318276463755310'; DiscordRPC.register(clientId); const rpc = new DiscordRPC.Client({ transport: 'ipc' }); const startTimestamp = new Date();
+  const clientId = '830823841516879892'; DiscordRPC.register(clientId); const rpc = new DiscordRPC.Client({ transport: 'ipc' }); const startTimestamp = new Date();
   rpc.on('ready', () => {
     rpc.setActivity({
-      details: `cozypenguin.net`, 
+      details: `rocketprogrammer.me`, 
       state: `Desktop Client`, 
       startTimestamp, 
       largeImageKey: `main-logo`//, 
@@ -60,7 +60,7 @@ function createWindow () {
   });
   rpc.login({ clientId }).catch(console.error);
 
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function () {
     mainWindow = null
@@ -80,6 +80,5 @@ app.on('activate', function () {
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow();
 });
-
 
 setInterval(clearCache, 1000*60*5);

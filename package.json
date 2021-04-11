@@ -1,7 +1,7 @@
 {
-  "name": "cozydesktop",
+  "name": "clubpenguin",
   "version": "1.0.0",
-  "description": "Desktop client for cozypenguin.net",
+  "description": "Desktop client for rocketprogrammer.me",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -10,11 +10,11 @@
     "appveyor-build": "electron-builder build --win --publish onTagOrDraft"
   },
   "bugs": {
-    "url": "https://github.com/cozy-penguin/client/issues"
+    "url": "https://github.com/rocketprogrammer/client/issues"
   },
-  "homepage": "https://github.com/cozy-penguin/client#readme",
-  "repository": "https://github.com/cozy-penguin/client",
-  "author": "AltoDev",
+  "homepage": "https://github.com/rocketprogrammer/client#readme",
+  "repository": "https://github.com/rocketprogrammer/client",
+  "author": "rocketprogrammer",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^6.1.2",
@@ -27,8 +27,8 @@
     "electron-updater": "^4.2.0"
   },
   "build": {
-    "appId": "com.cozypenguin.desktop",
-    "productName": "Cozy Penguin Desktop",
+    "appId": "com.clubpenguin.desktop",
+    "productName": "Club Penguin Desktop",
     "asar": "false",
     "win": {
       "publish": "github"
