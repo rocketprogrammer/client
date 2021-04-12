@@ -117,7 +117,7 @@
 	"author": "Club Penguin <support@rocketprogrammer.me> (https://rocketprogrammer.me)",
 	"license": "CC0-1.0",
 	"devDependencies": {
-		"electron": "^11.1.1",
+		"electron": "^12.0.2",
 		"electron-builder": "^22.9.1"
 	},
 	"dependencies": {
