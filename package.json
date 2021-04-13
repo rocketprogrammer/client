@@ -1,6 +1,6 @@
 {
 	"name": "clubpenguin",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Club Penguin Downloadable Client",
 	"productName": "Club Penguin",
 	"main": "main.js",
