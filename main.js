@@ -1,5 +1,4 @@
-
-/* 
+/*
 
     Club Penguin's Downloadable Client
     Copyright (C) 2021 Rocket<rocketprogrammer.me>
@@ -16,7 +15,6 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-	
 */
 
 /**
@@ -127,6 +125,7 @@ function createLoadingScreen(){
 	})
   });
 };
+
 /**
  * Creates the Menu Bar
  * @returns {Menu}
@@ -172,6 +171,14 @@ function createMenu() {
                 {
                     label: 'Log Out',
 					click: () => createLoadingScreen()
+                },
+                {
+                    label: 'Vanilla (AS3)',
+                    click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
+                },
+                {
+                    label: 'Old School (AS2)',
+                    click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
                 }
             ]
         }));
@@ -209,6 +216,14 @@ function createMenu() {
             }
         }));
         fsmenu.append(new MenuItem({
+            'label': 'Vanilla (AS3)',
+            click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
+        }));
+        fsmenu.append(new MenuItem({
+            'label': 'Old School (AS2)',
+            click: () => mainWindow.loadURL('https://old.rocketprogrammer.me')
+        }));
+        fsmenu.append(new MenuItem({
             label: 'Log Out',
             click: () => createLoadingScreen()
         }));
@@ -233,12 +248,13 @@ function createWindow () {
 	  preload: path.join(__dirname, './preload.js'),
       plugins: true,
       nodeIntegration: false,
-	  webSecurity: false
+	  webSecurity: false,
+	  contextIsolation: true
     }
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('https://play.rocketprogrammer.me');
+  mainWindow.loadURL('https://classic.rocketprogrammer.me');
   
 }
 /**
@@ -302,7 +318,7 @@ app.on('window-all-closed', () => {
  * @param {Object}
  * @returns {void}
  */
- 
+
 autoUpdater.on('update-available', (updateInfo) => {
 	switch (process.platform) {
 	case 'win32':
@@ -341,14 +357,11 @@ autoUpdater.on('update-available', (updateInfo) => {
  */
 
 ipcMain.on('load:data', (event, mute, theme) => {
-	console.log('ooop')
-	console.log(theme)
 	muted = (mute === 'true');
 	nativeTheme.themeSource = theme;
 	mainWindow.webContents.audioMuted = muted;
-	
+
 	mainWindow.webContents.send('theme', nativeTheme.themeSource);
-	
 });
 
 /**
