@@ -173,11 +173,11 @@ function createMenu() {
 					click: () => createLoadingScreen()
                 },
                 {
-                    label: 'Vanilla (AS3)',
+                    label: 'Old School (AS2)',
                     click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
                 },
                 {
-                    label: 'Old School (AS2)',
+                    label: 'Vanilla (AS3)',
                     click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
                 }
             ]
@@ -216,12 +216,12 @@ function createMenu() {
             }
         }));
         fsmenu.append(new MenuItem({
-            'label': 'Vanilla (AS3)',
-            click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
-        }));
-        fsmenu.append(new MenuItem({
             'label': 'Old School (AS2)',
             click: () => mainWindow.loadURL('https://old.rocketprogrammer.me')
+        }));
+        fsmenu.append(new MenuItem({
+            'label': 'Vanilla (AS3)',
+            click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
         }));
         fsmenu.append(new MenuItem({
             label: 'Log Out',
