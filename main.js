@@ -1,7 +1,7 @@
 /*
 
-    Club Penguin's Downloadable Client
-    Copyright (C) 2021 Rocket<rocketprogrammer.me>
+    Legacy Penguin's Downloadable Client
+    Copyright (C) 2021 Rocket<legacypengu.in>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ const {autoUpdater} = require("electron-updater");
 
 const DiscordRPC = require('discord-rpc');
 
-const aboutMessage = `Club Penguin Client v${app.getVersion()}
+const aboutMessage = `Legacy Penguin Client v${app.getVersion()}
 Based off the Coastal Freeze client.`;
 
 /**
@@ -82,7 +82,7 @@ function activateRPC() {
   const startTimestamp = new Date();
   rpc.on('ready', () => {
     rpc.setActivity({
-      details: `rocketprogrammer.me`, 
+      details: `legacypengu.in`, 
       state: `Desktop Client`, 
       startTimestamp, 
       largeImageKey: imageName
@@ -134,14 +134,14 @@ function createMenu() {
     fsmenu = new Menu();
     if (process.platform == 'darwin') {
         fsmenu.append(new MenuItem({
-            label: "Club Penguin Client",
+            label: "Legacy Penguin Client",
             submenu: [{
                     label: 'About',
                     click: () => {
                         dialog.showMessageBox({
                             type: "info",
                             buttons: ["Ok"],
-                            title: "About Club Penguin",
+                            title: "About Legacy Penguin",
                             message: aboutMessage
                         });
                     }
@@ -174,11 +174,11 @@ function createMenu() {
                 },
                 {
                     label: 'Old School (AS2)',
-                    click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
+                    click: () => mainWindow.loadURL('https://play.legacypengu.in')
                 },
                 {
                     label: 'Vanilla (AS3)',
-                    click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
+                    click: () => mainWindow.loadURL('https://play.legacypengu.in')
                 }
             ]
         }));
@@ -189,7 +189,7 @@ function createMenu() {
                 dialog.showMessageBox({
                     type: "info",
                     buttons: ["Ok"],
-                    title: "About Club Penguin",
+                    title: "About Legacy Penguin",
                     message: aboutMessage
                 });
             }
@@ -217,11 +217,11 @@ function createMenu() {
         }));
         fsmenu.append(new MenuItem({
             'label': 'Old School (AS2)',
-            click: () => mainWindow.loadURL('https://old.rocketprogrammer.me')
+            click: () => mainWindow.loadURL('https://old.legacypengu.in')
         }));
         fsmenu.append(new MenuItem({
             'label': 'Vanilla (AS3)',
-            click: () => mainWindow.loadURL('https://play.rocketprogrammer.me')
+            click: () => mainWindow.loadURL('https://play.legacypengu.in')
         }));
         fsmenu.append(new MenuItem({
             label: 'Log Out',
@@ -230,6 +230,7 @@ function createMenu() {
     }
 	return fsmenu
 }
+
 /**
  * creates MainWindow
  * @returns {void}
@@ -242,7 +243,7 @@ function createWindow () {
     height: 720,
     useContentSize: true,
     show: false,
-    title: "Club Penguin",
+    title: "Legacy Penguin",
     icon: __dirname + '/icons/windows/icon.ico',
     webPreferences: {
 	  preload: path.join(__dirname, './preload.js'),
@@ -254,9 +255,9 @@ function createWindow () {
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('https://classic.rocketprogrammer.me');
-  
+  mainWindow.loadURL('https://classic.legacypengu.in');
 }
+
 /**
  * Registers the Shortcuts
  * @returns {void}
@@ -266,6 +267,7 @@ function registerKeys() {
 		mainWindow.webContents.openDevTools();
 	})
 }
+
 /**
  * Toggles Dark mode
  * @returns {Boolean}

@@ -1,8 +1,8 @@
 {
-	"name": "clubpenguin",
-	"version": "1.0.2",
-	"description": "Club Penguin Downloadable Client",
-	"productName": "Club Penguin",
+	"name": "legacypenguin",
+	"version": "1.0.3",
+	"description": "Legacy Penguin Downloadable Client",
+	"productName": "Legacy Penguin",
 	"main": "main.js",
 	"scripts": {
 		"start": "electron ."
@@ -114,7 +114,7 @@
 			"icon": "icons/windows/icon.ico"
 		}
 	},
-	"author": "Club Penguin <support@rocketprogrammer.me> (https://rocketprogrammer.me)",
+	"author": "Legacy Penguin <support@legacypengu.in> (https://legacypengu.in)",
 	"license": "CC0-1.0",
 	"devDependencies": {
 		"electron": "^11.1.1",
