@@ -19,7 +19,7 @@
 				"repo": "client"
 			}
 		],
-		"appId": "net.clubpenguin.client",
+		"appId": "net.legacypenguin.client",
 		"mac": {
 			"asar": false,
 			"target": "dmg",
