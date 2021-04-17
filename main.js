@@ -84,8 +84,12 @@ function activateRPC() {
     rpc.setActivity({
       details: `legacypengu.in`, 
       state: `Desktop Client`, 
-      startTimestamp, 
-      largeImageKey: imageName
+      startTimestamp,
+      largeImageKey: imageName,
+      buttons: [
+        { label: 'Legacy (AS2)', url: 'https://old.legacypengu.in' },
+        { label: 'Vanilla (AS3)', url: 'https://play.legacypengu.in' }
+      ],
     });
   });
   rpc.login({
