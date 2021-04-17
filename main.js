@@ -167,12 +167,6 @@ function createMenu() {
                     }
                 },
                 {
-                    label: 'Dark Mode (Toggle)',
-                    click: () => {
-                        darkMode()
-                    }
-                },
-                {
                     label: 'Log Out',
 					click: () => createLoadingScreen()
                 },
@@ -211,12 +205,6 @@ function createMenu() {
             click: () => {
                 mainWindow.webContents.audioMuted = !mainWindow.webContents.audioMuted;
                 mainWindow.webContents.send('muted', mainWindow.webContents.audioMuted);
-            }
-        }));
-        fsmenu.append(new MenuItem({
-            label: 'Dark Mode (Toggle)',
-            click: () => {
-                darkMode()
             }
         }));
         fsmenu.append(new MenuItem({
@@ -270,16 +258,6 @@ function registerKeys() {
 	globalShortcut.register('CmdOrCtrl+Shift+I', () => {
 		mainWindow.webContents.openDevTools();
 	})
-}
-
-/**
- * Toggles Dark mode
- * @returns {Boolean}
- */
-function darkMode() {
-	nativeTheme.themeSource = nativeTheme.shouldUseDarkColors ? 'dark' : 'light'
-    mainWindow.webContents.send('theme', nativeTheme.themeSource);
-    return nativeTheme.shouldUseDarkColors
 }
 
 /**
