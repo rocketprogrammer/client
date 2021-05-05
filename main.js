@@ -88,7 +88,7 @@ function activateRPC() {
       largeImageKey: imageName,
       buttons: [
         { label: 'Legacy (AS2)', url: 'https://old.legacypengu.in' },
-        { label: 'Vanilla (AS3)', url: 'https://play.legacypengu.in' }
+        { label: 'Vanilla (AS3)', url: 'https://vanilla.legacypengu.in' }
       ],
     });
   });
@@ -176,7 +176,7 @@ function createMenu() {
                 },
                 {
                     label: 'Vanilla (AS3)',
-                    click: () => mainWindow.loadURL('https://play.legacypengu.in')
+                    click: () => mainWindow.loadURL('https://vanilla.legacypengu.in')
                 }
             ]
         }));
@@ -213,7 +213,7 @@ function createMenu() {
         }));
         fsmenu.append(new MenuItem({
             'label': 'Vanilla (AS3)',
-            click: () => mainWindow.loadURL('https://play.legacypengu.in')
+            click: () => mainWindow.loadURL('https://vanilla.legacypengu.in')
         }));
         fsmenu.append(new MenuItem({
             label: 'Log Out',
