@@ -1,6 +1,6 @@
 {
 	"name": "legacypenguin",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Legacy Penguin Downloadable Client",
 	"productName": "Legacy Penguin",
 	"main": "main.js",
