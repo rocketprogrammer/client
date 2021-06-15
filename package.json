@@ -121,7 +121,7 @@
 		"electron-builder": "^22.11.7"
 	},
 	"dependencies": {
-		"discord-rpc": "^3.1.4",
+		"discord-rpc": "^4.0.1",
 		"electron-updater": "^4.3.9",
 		"ini": ">=2.0.0"
 	}
