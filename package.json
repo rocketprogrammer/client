@@ -122,7 +122,7 @@
 	},
 	"dependencies": {
 		"discord-rpc": "^4.0.1",
-		"electron-updater": "^4.6.3",
+		"electron-updater": "^4.6.4",
 		"ini": ">=2.0.0"
 	}
 }
