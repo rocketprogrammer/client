@@ -1,8 +1,8 @@
 {
-	"name": "legacypenguin",
+	"name": "sunrisegames",
 	"version": "1.0.7",
-	"description": "Legacy Penguin Downloadable Client",
-	"productName": "Legacy Penguin",
+	"description": "Sunrise Games Downloadable Client",
+	"productName": "Sunrise Games",
 	"main": "main.js",
 	"scripts": {
 		"start": "electron ."
@@ -19,7 +19,7 @@
 				"repo": "client"
 			}
 		],
-		"appId": "net.legacypenguin.client",
+		"appId": "net.sunrisegames.client",
 		"mac": {
 			"asar": false,
 			"target": "dmg",
@@ -114,7 +114,7 @@
 			"icon": "icons/windows/icon.ico"
 		}
 	},
-	"author": "Legacy Penguin <support@legacypengu.in> (https://legacypengu.in)",
+	"author": "Sunrise Games <support@sunrise.games> (https://sunrise.games)",
 	"license": "CC0-1.0",
 	"devDependencies": {
 		"electron": "^11.1.1",

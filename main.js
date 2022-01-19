@@ -1,7 +1,7 @@
 /*
 
-    Legacy Penguin's Downloadable Client
-    Copyright (C) 2021 Rocket<legacypengu.in>
+    Sunrise Games's Downloadable Client
+    Copyright (C) 2021 Rocket<sunrise.games>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ const {autoUpdater} = require("electron-updater");
 
 const DiscordRPC = require('discord-rpc');
 
-const aboutMessage = `Legacy Penguin Client v${app.getVersion()}
+const aboutMessage = `Sunrise Games Client v${app.getVersion()}
 Based off the Coastal Freeze client.`;
 
 /**
@@ -58,7 +58,7 @@ switch (process.platform) {
 				pluginName = 'flash/linux/64/libpepflashplayer.so'
 				break
 			}
-		
+
 		app.commandLine.appendSwitch('no-sandbox');
 		break
 	case 'darwin':
@@ -74,26 +74,26 @@ app.commandLine.appendSwitch("disable-http-cache");
  * @returns {void}
  */
 let rpc;
-function activateRPC() { 
+function activateRPC() {
   DiscordRPC.register('830823841516879892');
   rpc = new DiscordRPC.Client({
 	  transport: 'ipc'
-  }); 
+  });
   const startTimestamp = new Date();
   rpc.on('ready', () => {
     rpc.setActivity({
-      details: `legacypengu.in`, 
-      state: `Desktop Client`, 
+      details: `sunrise.games`,
+      state: `Desktop Client`,
       startTimestamp,
       largeImageKey: imageName,
       buttons: [
-        { label: 'Legacy (AS2)', url: 'https://old.legacypengu.in' },
-        { label: 'Vanilla (AS3)', url: 'https://vanilla.legacypengu.in' }
+        { label: 'Legacy (AS2)', url: 'https://old.sunrise.games' },
+        { label: 'Vanilla (AS3)', url: 'https://vanilla.sunrise.games' }
       ],
     });
   });
   rpc.login({
-	clientId: '830823841516879892' 
+	clientId: '830823841516879892'
   }).catch(console.error);
 }
 /**
@@ -103,7 +103,7 @@ function activateRPC() {
 let loadingScreen;
 function createLoadingScreen(){
   /// create a browser mainWindow
-  
+
   loadingScreen = new BrowserWindow({
       /// define width and height for the mainWindow
       width: 1280,
@@ -134,18 +134,18 @@ function createLoadingScreen(){
  * Creates the Menu Bar
  * @returns {Menu}
  */
-function createMenu() { 
+function createMenu() {
     fsmenu = new Menu();
     if (process.platform == 'darwin') {
         fsmenu.append(new MenuItem({
-            label: "Legacy Penguin Client",
+            label: "Sunrise Games Client",
             submenu: [{
                     label: 'About',
                     click: () => {
                         dialog.showMessageBox({
                             type: "info",
                             buttons: ["Ok"],
-                            title: "About Legacy Penguin",
+                            title: "About Sunrise Games",
                             message: aboutMessage
                         });
                     }
@@ -172,11 +172,11 @@ function createMenu() {
                 },
                 {
                     label: 'Old School (AS2)',
-                    click: () => mainWindow.loadURL('https://play.legacypengu.in')
+                    click: () => mainWindow.loadURL('https://play.sunrise.games')
                 },
                 {
                     label: 'Vanilla (AS3)',
-                    click: () => mainWindow.loadURL('https://vanilla.legacypengu.in')
+                    click: () => mainWindow.loadURL('https://vanilla.sunrise.games')
                 }
             ]
         }));
@@ -187,7 +187,7 @@ function createMenu() {
                 dialog.showMessageBox({
                     type: "info",
                     buttons: ["Ok"],
-                    title: "About Legacy Penguin",
+                    title: "About Sunrise Games",
                     message: aboutMessage
                 });
             }
@@ -209,11 +209,11 @@ function createMenu() {
         }));
         fsmenu.append(new MenuItem({
             'label': 'Old School (AS2)',
-            click: () => mainWindow.loadURL('https://old.legacypengu.in')
+            click: () => mainWindow.loadURL('https://old.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
             'label': 'Vanilla (AS3)',
-            click: () => mainWindow.loadURL('https://vanilla.legacypengu.in')
+            click: () => mainWindow.loadURL('https://vanilla.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
             label: 'Log Out',
@@ -235,7 +235,7 @@ function createWindow () {
     height: 720,
     useContentSize: true,
     show: false,
-    title: "Legacy Penguin",
+    title: "Sunrise Games",
     icon: __dirname + '/icons/windows/icon.ico',
     webPreferences: {
 	  preload: path.join(__dirname, './preload.js'),
@@ -247,7 +247,7 @@ function createWindow () {
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('https://classic.legacypengu.in');
+  mainWindow.loadURL('http://127.0.0.1');
 }
 
 /**
@@ -263,12 +263,12 @@ function registerKeys() {
 /**
  * Auto Updater and Events!
  */
- 
+
 /**
 * This event will fire if update is downloaded
 * @returns {void}
 */
- 
+
 let updateAv = false;
 autoUpdater.on('update-downloaded', () => {
     updateAv = true;
