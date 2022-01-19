@@ -93,7 +93,7 @@ function activateRPC() {
     });
   });
   rpc.login({
-	clientId: '830823841516879892'
+	clientId: '592845025331642389'
   }).catch(console.error);
 }
 /**
