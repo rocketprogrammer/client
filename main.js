@@ -87,8 +87,8 @@ function activateRPC() {
       startTimestamp,
       largeImageKey: imageName,
       buttons: [
-        { label: 'Legacy (AS2)', url: 'https://old.sunrise.games' },
-        { label: 'Vanilla (AS3)', url: 'https://vanilla.sunrise.games' }
+        { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
+        { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
       ],
     });
   });
@@ -176,7 +176,7 @@ function createMenu() {
                 },
                 {
                     label: 'Vanilla (AS3)',
-                    click: () => mainWindow.loadURL('https://vanilla.sunrise.games')
+                    click: () => mainWindow.loadURL('https://modern.waddle.sunrise.games')
                 }
             ]
         }));
@@ -209,11 +209,11 @@ function createMenu() {
         }));
         fsmenu.append(new MenuItem({
             'label': 'Old School (AS2)',
-            click: () => mainWindow.loadURL('https://old.sunrise.games')
+            click: () => mainWindow.loadURL('https://legacy.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
             'label': 'Vanilla (AS3)',
-            click: () => mainWindow.loadURL('https://vanilla.sunrise.games')
+            click: () => mainWindow.loadURL('https://modern.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
             label: 'Log Out',
@@ -247,7 +247,7 @@ function createWindow () {
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('http://127.0.0.1');
+  mainWindow.loadURL('https://legacy.waddle.sunrise.games');
 }
 
 /**
