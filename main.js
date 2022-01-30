@@ -171,11 +171,11 @@ function createMenu() {
 					click: () => createLoadingScreen()
                 },
                 {
-                    label: 'Old School (AS2)',
+                    label: 'Legacy (AS2)',
                     click: () => mainWindow.loadURL('https://play.sunrise.games')
                 },
                 {
-                    label: 'Vanilla (AS3)',
+                    label: 'Modern (AS3)',
                     click: () => mainWindow.loadURL('https://modern.waddle.sunrise.games')
                 }
             ]
@@ -208,11 +208,11 @@ function createMenu() {
             }
         }));
         fsmenu.append(new MenuItem({
-            'label': 'Old School (AS2)',
+            'label': 'Legacy (AS2)',
             click: () => mainWindow.loadURL('https://legacy.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
-            'label': 'Vanilla (AS3)',
+            'label': 'Modern (AS3)',
             click: () => mainWindow.loadURL('https://modern.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
