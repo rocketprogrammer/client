@@ -23,7 +23,7 @@
 const {app, dialog, BrowserWindow, Menu, MenuItem, ipcMain, nativeTheme, globalShortcut, session} = require('electron')
 const path = require('path')
 
-const {autoUpdater} = require("electron-updater");
+const {autoUpdater} = require('electron-updater');
 
 const DiscordRPC = require('discord-rpc');
 
@@ -69,7 +69,7 @@ switch (process.platform) {
 		break
 }
 app.commandLine.appendSwitch('ppapi-flash-path', path.join(__dirname, pluginName));
-app.commandLine.appendSwitch("disable-http-cache");
+app.commandLine.appendSwitch('disable-http-cache');
 
 /**
  * Activates Discord Rich Presence
@@ -82,20 +82,29 @@ function activateRPC() {
 	  transport: 'ipc'
   });
   rpc.on('ready', () => {
-    rpc.setActivity({
-      details: isLegacyPenguin() ? 'Legacy Club Penguin' : 'Modern Club Penguin',
-      state: 'Logging in...',
-      startTimestamp,
-      largeImageKey: imageName,
-      buttons: [
-        { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
-        { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
-      ],
-    });
+    setDiscordPresence();
   });
   rpc.login({
 	clientId: '592845025331642389'
   }).catch(console.error);
+}
+
+function loadPage(webPage) {
+    mainWindow.loadURL(webPage);
+    setDiscordPresence();
+}
+
+function setDiscordPresence() {
+    rpc.setActivity({
+        details: isLegacyPenguin() ? 'Legacy Club Penguin' : 'Modern Club Penguin',
+        state: 'Logging in...',
+        startTimestamp,
+        largeImageKey: imageName,
+        buttons: [
+          { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
+          { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
+        ],
+      }).catch(console.error);
 }
 
 function setupZonePresence(zoneId, penguinName) {
@@ -166,14 +175,14 @@ function createMenu() {
     fsmenu = new Menu();
     if (process.platform == 'darwin') {
         fsmenu.append(new MenuItem({
-            label: "Sunrise Games Client",
+            label: 'Sunrise Games Client',
             submenu: [{
                     label: 'About',
                     click: () => {
                         dialog.showMessageBox({
-                            type: "info",
-                            buttons: ["Ok"],
-                            title: "About Sunrise Games",
+                            type: 'info',
+                            buttons: ['Ok'],
+                            title: 'About Sunrise Games',
                             message: aboutMessage
                         });
                     }
@@ -200,11 +209,11 @@ function createMenu() {
                 },
                 {
                     label: 'Legacy (AS2)',
-                    click: () => mainWindow.loadURL('https://play.sunrise.games')
+                    click: () => loadPage('https://legacy.waddle.sunrise.games')
                 },
                 {
                     label: 'Modern (AS3)',
-                    click: () => mainWindow.loadURL('https://modern.waddle.sunrise.games')
+                    click: () => loadPage('https://modern.waddle.sunrise.games')
                 }
             ]
         }));
@@ -213,9 +222,9 @@ function createMenu() {
             label: 'About',
             click: () => {
                 dialog.showMessageBox({
-                    type: "info",
-                    buttons: ["Ok"],
-                    title: "About Sunrise Games",
+                    type: 'info',
+                    buttons: ['Ok'],
+                    title: 'About Sunrise Games',
                     message: aboutMessage
                 });
             }
@@ -237,11 +246,11 @@ function createMenu() {
         }));
         fsmenu.append(new MenuItem({
             'label': 'Legacy (AS2)',
-            click: () => mainWindow.loadURL('https://legacy.waddle.sunrise.games')
+            click: () => loadPage('https://legacy.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
             'label': 'Modern (AS3)',
-            click: () => mainWindow.loadURL('https://modern.waddle.sunrise.games')
+            click: () => loadPage('https://modern.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
             label: 'Log Out',
@@ -263,7 +272,7 @@ function createWindow () {
     height: 720,
     useContentSize: true,
     show: false,
-    title: "Sunrise Games",
+    title: 'Sunrise Games',
     icon: __dirname + '/icons/windows/icon.ico',
     webPreferences: {
 	  preload: path.join(__dirname, './preload.js'),
@@ -347,26 +356,26 @@ autoUpdater.on('update-available', (updateInfo) => {
 	switch (process.platform) {
 	case 'win32':
 	    dialog.showMessageBox({
-		  type: "info",
-		  buttons: ["Ok"],
-		  title: "Update Available",
-		  message: "There is a new version available (v" + updateInfo.version + "). It will be installed when the app closes."
+		  type: 'info',
+		  buttons: ['Ok'],
+		  title: 'Update Available',
+		  message: 'There is a new version available (v' + updateInfo.version + '). It will be installed when the app closes.'
 	    });
 	    break
 	case 'darwin':
 	    dialog.showMessageBox({
-		  type: "info",
-		  buttons: ["Ok"],
-		  title: "Update Available",
-		  message: "There is a new version available (v" + updateInfo.version + "). Please go install it manually from the website."
+		  type: 'info',
+		  buttons: ['Ok'],
+		  title: 'Update Available',
+		  message: 'There is a new version available (v' + updateInfo.version + '). Please go install it manually from the website.'
 	    });
 	    break
 	case 'linux':
 	    dialog.showMessageBox({
-		  type: "info",
-		  buttons: ["Ok"],
-		  title: "Update Available",
-		  message: "There is a new version available (v" + updateInfo.version + "). Auto-update has not been tested on this OS, so if after relaunching app this appears again, please go install it manually."
+		  type: 'info',
+		  buttons: ['Ok'],
+		  title: 'Update Available',
+		  message: 'There is a new version available (v' + updateInfo.version + '). Auto-update has not been tested on this OS, so if after relaunching app this appears again, please go install it manually.'
 	    });
 	    break
 	}
