@@ -83,7 +83,7 @@ function activateRPC() {
   });
   rpc.on('ready', () => {
     rpc.setActivity({
-      details: 'Club Penguin',
+      details: isLegacyPenguin() ? 'Legacy Club Penguin' : 'Modern Club Penguin',
       state: 'Logging in...',
       startTimestamp,
       largeImageKey: imageName,
@@ -116,7 +116,7 @@ function setupZonePresence(zoneId, penguinName) {
         state: roomIdToName[zoneId] || 'Waddling',
         startTimestamp,
         largeImageKey: roomIdToImage[zoneId] || 'windows_icon',
-        largeImageText: 'Club Penguin',
+        largeImageText: isLegacyPenguin() ? 'Legacy Club Penguin' : 'Modern Club Penguin',
         buttons: [
           { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
           { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
@@ -275,7 +275,7 @@ function createWindow () {
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('http://localhost');
+  mainWindow.loadURL('https://legacy.waddle.sunrise.games');
 }
 
 function isLegacyPenguin() {
