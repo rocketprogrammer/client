@@ -38,7 +38,6 @@ const startTimestamp = new Date();
 let pluginName
 switch (process.platform) {
 	case 'win32':
-		imageName = 'windows_icon';
 		switch (process.arch) {
 			case 'ia32':
 			case 'x32':
@@ -50,7 +49,6 @@ switch (process.platform) {
 			}
 		break
 	case 'linux':
-		imageName = 'linux_icon';
 		switch (process.arch) {
 			case 'ia32':
 			case 'x32':
@@ -64,7 +62,6 @@ switch (process.platform) {
 		app.commandLine.appendSwitch('no-sandbox');
 		break
 	case 'darwin':
-		imageName = 'mac_os_icon';
 		pluginName = 'flash/mac/PepperFlashPlayer.plugin'
 		break
 }
@@ -99,7 +96,7 @@ function setDiscordPresence() {
         details: isLegacyPenguin() ? 'Legacy Club Penguin' : 'Modern Club Penguin',
         state: 'Logging in...',
         startTimestamp,
-        largeImageKey: imageName,
+        largeImageKey: 'icon',
         buttons: [
           { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
           { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
@@ -284,7 +281,7 @@ function createWindow () {
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('https://legacy.waddle.sunrise.games');
+  mainWindow.loadURL('http://localhost');
 }
 
 function isLegacyPenguin() {
