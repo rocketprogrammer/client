@@ -1,2 +1,3 @@
 node_modules
-dist/win-unpacked/*
+dist/*
+builder.bat

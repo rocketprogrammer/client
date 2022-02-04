@@ -1,11 +1,12 @@
 {
 	"name": "sunrisegames",
-	"version": "1.0.7",
+	"version": "1.0.9",
 	"description": "Sunrise Games Downloadable Client",
 	"productName": "Sunrise Games",
 	"main": "main.js",
 	"scripts": {
-		"start": "electron ."
+		"start": "electron .",
+		"make-win-publish": "electron-builder build --win --publish always"
 	},
 	"repository": "https://github.com/rocketprogrammer/client",
 	"keywords": [

@@ -32,14 +32,6 @@ Based off the Coastal Freeze client.`;
 
 const startTimestamp = new Date();
 
-var roomIdToName = {
-    100: 'Town Center'
-}
-
-var roomIdToImage = {
-    100: 'town_2006_ice_rink'
-}
-
 /**
  * This switch case will return the correct DLL/so/plugin for the app
  */
@@ -91,8 +83,8 @@ function activateRPC() {
   });
   rpc.on('ready', () => {
     rpc.setActivity({
-      details: `sunrise.games`,
-      state: `Desktop Client`,
+      details: 'Club Penguin',
+      state: 'Logging in...',
       startTimestamp,
       largeImageKey: imageName,
       buttons: [
@@ -105,6 +97,33 @@ function activateRPC() {
 	clientId: '592845025331642389'
   }).catch(console.error);
 }
+
+function setupZonePresence(zoneId, penguinName) {
+    var roomIdToName = {
+        100: 'Town Center',
+        110: 'Coffee Shop',
+        120: 'Night Club'
+    }
+
+    var roomIdToImage = {
+        100: isLegacyPenguin() ? 'town_2006_ice_rink' : 'town_2012_ice_rink',
+        110: 'coffee_shop_as2',
+        120: 'night_club_as2'
+    }
+
+    rpc.setActivity({
+        details: penguinName,
+        state: roomIdToName[zoneId] || 'Waddling',
+        startTimestamp,
+        largeImageKey: roomIdToImage[zoneId] || 'windows_icon',
+        largeImageText: 'Club Penguin',
+        buttons: [
+          { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
+          { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
+        ],
+      }).catch(console.error);
+}
+
 /**
  * creates the loading screen
  * @returns {void}
@@ -256,7 +275,19 @@ function createWindow () {
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('https://legacy.waddle.sunrise.games');
+  mainWindow.loadURL('http://localhost');
+}
+
+function isLegacyPenguin() {
+    let currentURL = mainWindow.webContents.getURL();
+
+    if (currentURL.includes('legacy.waddle') || currentURL.includes('localhost')) {
+        // This is AS2 (Legacy).
+        return true;
+    }
+
+    // Assume this is AS3 (Modern).
+    return false;
 }
 
 /**
@@ -362,15 +393,6 @@ ipcMain.on('load:data', (event, mute, theme) => {
  */
 
 // Discord Rich Presence
-ipcMain.on('setDiscordZone', function(event, zoneId) {
-    rpc.setActivity({
-        details: roomIdToName[zoneId] || 'windows_icon',
-        state: `Desktop Client`,
-        startTimestamp,
-        largeImageKey: roomIdToImage[zoneId] || 'windows_icon',
-        buttons: [
-          { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
-          { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
-        ],
-      });
+ipcMain.on('setDiscordZone', function(event, zoneId, penguinName) {
+    setupZonePresence(zoneId, penguinName);
 });
