@@ -1,4 +1,5 @@
 const {ipcRenderer} = require('electron');
+window.ipcRenderer = require('electron').ipcRenderer;
 let checkExist;
 
 ipcRenderer.on('muted', (event, data) => {
@@ -12,7 +13,7 @@ ipcRenderer.on('theme', (event, data) => {
 window.addEventListener('load', (event) => {
 });
 
-function load(){
+function load() {
 	if(localStorage.muted == undefined){
 		localStorage.muted = false;
 		localStorage.theme = 'dark';

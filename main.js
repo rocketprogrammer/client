@@ -30,6 +30,16 @@ const DiscordRPC = require('discord-rpc');
 const aboutMessage = `Sunrise Games Client v${app.getVersion()}
 Based off the Coastal Freeze client.`;
 
+const startTimestamp = new Date();
+
+var roomIdToName = {
+    100: 'Town Center'
+}
+
+var roomIdToImage = {
+    100: 'town_2006_ice_rink'
+}
+
 /**
  * This switch case will return the correct DLL/so/plugin for the app
  */
@@ -79,7 +89,6 @@ function activateRPC() {
   rpc = new DiscordRPC.Client({
 	  transport: 'ipc'
   });
-  const startTimestamp = new Date();
   rpc.on('ready', () => {
     rpc.setActivity({
       details: `sunrise.games`,
@@ -242,7 +251,7 @@ function createWindow () {
       plugins: true,
       nodeIntegration: false,
 	  webSecurity: false,
-	  contextIsolation: true
+	  contextIsolation: false
     }
   })
   registerKeys()
@@ -351,3 +360,17 @@ ipcMain.on('load:data', (event, mute, theme) => {
 /**
  * End of Auto Updater part
  */
+
+// Discord Rich Presence
+ipcMain.on('setDiscordZone', function(event, zoneId) {
+    rpc.setActivity({
+        details: roomIdToName[zoneId] || 'windows_icon',
+        state: `Desktop Client`,
+        startTimestamp,
+        largeImageKey: roomIdToImage[zoneId] || 'windows_icon',
+        buttons: [
+          { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
+          { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
+        ],
+      });
+});
