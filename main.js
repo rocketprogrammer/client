@@ -32,6 +32,11 @@ Based off the Coastal Freeze client.`;
 
 const startTimestamp = new Date();
 
+const buttons = [
+    {label: 'Legacy', url: 'https://legacy.waddle.sunrise.games'},
+    {label: 'Modern', url: 'https://modern.waddle.sunrise.games'}
+]
+
 /**
  * This switch case will return the correct DLL/so/plugin for the app
  */
@@ -97,10 +102,7 @@ function setDiscordPresence() {
         state: 'Logging in...',
         startTimestamp,
         largeImageKey: 'icon',
-        buttons: [
-          { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
-          { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
-        ],
+        buttons: buttons
       }).catch(console.error);
 }
 
@@ -108,25 +110,32 @@ function setupZonePresence(zoneId, penguinName) {
     var roomIdToName = {
         100: 'Town Center',
         110: 'Coffee Shop',
-        120: 'Night Club'
+        111: 'Book Room',
+        120: 'Night Club',
+        121: isLegacyPenguin() ? 'Dance Lounge' : 'Arcade',
+        952: 'Dance Contest',
+        900: 'Astro Barrier',
+        909: 'Thin Ice'
     }
 
     var roomIdToImage = {
         100: isLegacyPenguin() ? 'town_2006_ice_rink' : 'town_2012_ice_rink',
         110: 'coffee_shop_as2',
-        120: 'night_club_as2'
+        111: isLegacyPenguin() ? 'book_room_2005': 'book_room_2012',
+        120: 'night_club_as2',
+        121: isLegacyPenguin() ? 'dance_lounge_2006' : 'arcade',
+        952: 'dance_contest_logo',
+        900: 'astrobarrierstartscreennewfont',
+        909: 'thin_ice'
     }
 
     rpc.setActivity({
         details: penguinName,
         state: roomIdToName[zoneId] || 'Waddling',
         startTimestamp,
-        largeImageKey: roomIdToImage[zoneId] || 'windows_icon',
+        largeImageKey: roomIdToImage[zoneId] || 'icon',
         largeImageText: isLegacyPenguin() ? 'Legacy Club Penguin' : 'Modern Club Penguin',
-        buttons: [
-          { label: 'Legacy (AS2)', url: 'https://legacy.waddle.sunrise.games' },
-          { label: 'Vanilla (AS3)', url: 'https://modern.waddle.sunrise.games' }
-        ],
+        buttons: buttons
       }).catch(console.error);
 }
 
@@ -135,7 +144,7 @@ function setupZonePresence(zoneId, penguinName) {
  * @returns {void}
  */
 let loadingScreen;
-function createLoadingScreen(){
+function createLoadingScreen() {
   /// create a browser mainWindow
 
   loadingScreen = new BrowserWindow({
@@ -205,11 +214,11 @@ function createMenu() {
 					click: () => createLoadingScreen()
                 },
                 {
-                    label: 'Legacy (AS2)',
+                    label: 'Legacy',
                     click: () => loadPage('https://legacy.waddle.sunrise.games')
                 },
                 {
-                    label: 'Modern (AS3)',
+                    label: 'Modern',
                     click: () => loadPage('https://modern.waddle.sunrise.games')
                 }
             ]
@@ -242,11 +251,11 @@ function createMenu() {
             }
         }));
         fsmenu.append(new MenuItem({
-            'label': 'Legacy (AS2)',
+            'label': 'Legacy',
             click: () => loadPage('https://legacy.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
-            'label': 'Modern (AS3)',
+            'label': 'Modern',
             click: () => loadPage('https://modern.waddle.sunrise.games')
         }));
         fsmenu.append(new MenuItem({
@@ -262,7 +271,7 @@ function createMenu() {
  * @returns {void}
  */
 let mainWindow;
-function createWindow () {
+function createWindow() {
   // Create the browser mainWindow.
   mainWindow = new BrowserWindow({
     width: 1280,
@@ -270,7 +279,7 @@ function createWindow () {
     useContentSize: true,
     show: false,
     title: 'Sunrise Games',
-    icon: __dirname + '/icons/windows/icon.ico',
+    icon: __dirname + '/assets/icon.ico',
     webPreferences: {
 	  preload: path.join(__dirname, './preload.js'),
       plugins: true,
@@ -288,11 +297,11 @@ function isLegacyPenguin() {
     let currentURL = mainWindow.webContents.getURL();
 
     if (currentURL.includes('legacy.waddle') || currentURL.includes('localhost')) {
-        // This is AS2 (Legacy).
+        // This is the Legacy client.
         return true;
     }
 
-    // Assume this is AS3 (Modern).
+    // Assume this is the Modern client.
     return false;
 }
 

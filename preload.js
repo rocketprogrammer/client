@@ -14,7 +14,7 @@ window.addEventListener('load', (event) => {
 });
 
 function load() {
-	if(localStorage.muted == undefined){
+	if (localStorage.muted == undefined) {
 		localStorage.muted = false;
 		localStorage.theme = 'dark';
 	}
