@@ -292,13 +292,13 @@ function createWindow() {
   })
   registerKeys()
   Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('http://localhost');
+  mainWindow.loadURL('http://localhost/as3/');
 }
 
 function isLegacyPenguin() {
     let currentURL = mainWindow.webContents.getURL();
 
-    if (currentURL.includes('legacy.waddle') || currentURL.includes('localhost')) {
+    if (currentURL.includes('legacy.waddle') || !currentURL.includes('localhost/as3/')) {
         // This is the Legacy client.
         return true;
     }
