@@ -20,10 +20,10 @@
 /**
  * Modules and variables
  */
-const {app, dialog, BrowserWindow, Menu, MenuItem, ipcMain, nativeTheme, globalShortcut, session} = require('electron')
+const { app, dialog, BrowserWindow, Menu, MenuItem, ipcMain, nativeTheme, globalShortcut, session } = require('electron')
 const path = require('path')
 
-const {autoUpdater} = require('electron-updater');
+const { autoUpdater } = require('electron-updater');
 
 const DiscordRPC = require('discord-rpc');
 
@@ -33,8 +33,8 @@ Based off the Coastal Freeze client.`;
 const startTimestamp = new Date();
 
 const buttons = [
-    {label: 'Legacy', url: 'https://legacy.waddle.sunrise.games'},
-    {label: 'Modern', url: 'https://modern.waddle.sunrise.games'}
+    { label: 'Legacy', url: 'https://legacy.waddle.sunrise.games' },
+    { label: 'Modern', url: 'https://modern.waddle.sunrise.games' }
 ]
 
 /**
@@ -42,33 +42,33 @@ const buttons = [
  */
 let pluginName
 switch (process.platform) {
-	case 'win32':
-		switch (process.arch) {
-			case 'ia32':
-			case 'x32':
-				pluginName = 'flash/windows/32/pepflashplayer.dll'
-				break
-			case 'x64':
-				pluginName = 'flash/windows/64/pepflashplayer.dll'
-				break
-			}
-		break
-	case 'linux':
-		switch (process.arch) {
-			case 'ia32':
-			case 'x32':
-				pluginName = 'flash/linux/32/libpepflashplayer.so'
-				break
-			case 'x64':
-				pluginName = 'flash/linux/64/libpepflashplayer.so'
-				break
-			}
+    case 'win32':
+        switch (process.arch) {
+            case 'ia32':
+            case 'x32':
+                pluginName = 'flash/windows/32/pepflashplayer.dll'
+                break
+            case 'x64':
+                pluginName = 'flash/windows/64/pepflashplayer.dll'
+                break
+        }
+        break
+    case 'linux':
+        switch (process.arch) {
+            case 'ia32':
+            case 'x32':
+                pluginName = 'flash/linux/32/libpepflashplayer.so'
+                break
+            case 'x64':
+                pluginName = 'flash/linux/64/libpepflashplayer.so'
+                break
+        }
 
-		app.commandLine.appendSwitch('no-sandbox');
-		break
-	case 'darwin':
-		pluginName = 'flash/mac/PepperFlashPlayer.plugin'
-		break
+        app.commandLine.appendSwitch('no-sandbox');
+        break
+    case 'darwin':
+        pluginName = 'flash/mac/PepperFlashPlayer.plugin'
+        break
 }
 app.commandLine.appendSwitch('ppapi-flash-path', path.join(__dirname, pluginName));
 app.commandLine.appendSwitch('disable-http-cache');
@@ -79,16 +79,16 @@ app.commandLine.appendSwitch('disable-http-cache');
  */
 let rpc;
 function activateRPC() {
-  DiscordRPC.register('830823841516879892');
-  rpc = new DiscordRPC.Client({
-	  transport: 'ipc'
-  });
-  rpc.on('ready', () => {
-    setDiscordPresence();
-  });
-  rpc.login({
-	clientId: '592845025331642389'
-  }).catch(console.error);
+    DiscordRPC.register('830823841516879892');
+    rpc = new DiscordRPC.Client({
+        transport: 'ipc'
+    });
+    rpc.on('ready', () => {
+        setDiscordPresence();
+    });
+    rpc.login({
+        clientId: '592845025331642389'
+    }).catch(console.error);
 }
 
 function loadPage(webPage) {
@@ -103,7 +103,7 @@ function setDiscordPresence() {
         startTimestamp,
         largeImageKey: 'icon',
         buttons: buttons
-      }).catch(console.error);
+    }).catch(console.error);
 }
 
 function setupZonePresence(zoneId, penguinName) {
@@ -122,13 +122,13 @@ function setupZonePresence(zoneId, penguinName) {
     var roomIdToImage = {
         100: isLegacyPenguin() ? 'town_2006_ice_rink' : 'town_2012_ice_rink',
         110: 'coffee_shop_as2',
-        111: isLegacyPenguin() ? 'book_room_2005': 'book_room_2012',
-        120: 'night_club_as2',
+        111: isLegacyPenguin() ? 'book_room_2005' : 'book_room_2012',
+        120: isLegacyPenguin() ? 'night_club_as2' : 'dance_club_july_2014',
         121: isLegacyPenguin() ? 'dance_lounge_2006' : 'arcade',
         952: 'dance_contest_logo',
         900: 'astrobarrierstartscreennewfont',
         909: 'thin_ice',
-        320: isLegacyPenguin() ? 'dojo_2009': 'dojo_2013'
+        320: isLegacyPenguin() ? 'dojo_2009' : 'dojo_2013'
     }
 
     rpc.setActivity({
@@ -138,7 +138,7 @@ function setupZonePresence(zoneId, penguinName) {
         largeImageKey: roomIdToImage[zoneId] || 'icon',
         largeImageText: isLegacyPenguin() ? 'Legacy Club Penguin' : 'Modern Club Penguin',
         buttons: buttons
-      }).catch(console.error);
+    }).catch(console.error);
 }
 
 /**
@@ -147,32 +147,32 @@ function setupZonePresence(zoneId, penguinName) {
  */
 let loadingScreen;
 function createLoadingScreen() {
-  /// create a browser mainWindow
+    /// create a browser mainWindow
 
-  loadingScreen = new BrowserWindow({
-      /// define width and height for the mainWindow
-      width: 1280,
-      height: 720,
-      /// remove the mainWindow frame, so it will become a frameless mainWindow
-      frame: false,
-      /// and set the transparency, to remove any mainWindow background color
-      transparent: true
+    loadingScreen = new BrowserWindow({
+        /// define width and height for the mainWindow
+        width: 1280,
+        height: 720,
+        /// remove the mainWindow frame, so it will become a frameless mainWindow
+        frame: false,
+        /// and set the transparency, to remove any mainWindow background color
+        transparent: true
     }
-  );
-  if(mainWindow) mainWindow.close()
-  loadingScreen.setResizable(false);
-  loadingScreen.loadURL(
-    'file://' + __dirname + '/window/loading.html'
-  );
-  loadingScreen.on('closed', () => (loadingScreen = null));
-  loadingScreen.webContents.on('did-finish-load', () => {
-	createWindow();
-	mainWindow.webContents.on('did-finish-load', () => {
-		if(loadingScreen) loadingScreen.close()
-		if(!rpc) activateRPC()
-		mainWindow.show()
-	})
-  });
+    );
+    if (mainWindow) mainWindow.close()
+    loadingScreen.setResizable(false);
+    loadingScreen.loadURL(
+        'file://' + __dirname + '/window/loading.html'
+    );
+    loadingScreen.on('closed', () => (loadingScreen = null));
+    loadingScreen.webContents.on('did-finish-load', () => {
+        createWindow();
+        mainWindow.webContents.on('did-finish-load', () => {
+            if (loadingScreen) loadingScreen.close()
+            if (!rpc) activateRPC()
+            mainWindow.show()
+        })
+    });
 };
 
 /**
@@ -185,44 +185,44 @@ function createMenu() {
         fsmenu.append(new MenuItem({
             label: 'Sunrise Games Client',
             submenu: [{
-                    label: 'About',
-                    click: () => {
-                        dialog.showMessageBox({
-                            type: 'info',
-                            buttons: ['Ok'],
-                            title: 'About Sunrise Games',
-                            message: aboutMessage
-                        });
-                    }
-                },
-                {
-                    label: 'Fullscreen (Toggle)',
-                    accelerator: 'CmdOrCtrl+F',
-                    click: () => {
-                        mainWindow.setFullScreen(!mainWindow.isFullScreen());
-                        mainWindow.webContents.send('fullscreen', mainWindow.isFullScreen());
-                    }
-                },
-                {
-                    label: 'Mute Audio (Toggle)',
-					accelerator: 'CmdOrCtrl+M',
-                    click: () => {
-                        mainWindow.webContents.audioMuted = !mainWindow.webContents.audioMuted;
-                        mainWindow.webContents.send('muted', mainWindow.webContents.audioMuted);
-                    }
-                },
-                {
-                    label: 'Log Out',
-					click: () => createLoadingScreen()
-                },
-                {
-                    label: 'Legacy',
-                    click: () => loadPage('https://legacy.waddle.sunrise.games')
-                },
-                {
-                    label: 'Modern',
-                    click: () => loadPage('https://modern.waddle.sunrise.games')
+                label: 'About',
+                click: () => {
+                    dialog.showMessageBox({
+                        type: 'info',
+                        buttons: ['Ok'],
+                        title: 'About Sunrise Games',
+                        message: aboutMessage
+                    });
                 }
+            },
+            {
+                label: 'Fullscreen (Toggle)',
+                accelerator: 'CmdOrCtrl+F',
+                click: () => {
+                    mainWindow.setFullScreen(!mainWindow.isFullScreen());
+                    mainWindow.webContents.send('fullscreen', mainWindow.isFullScreen());
+                }
+            },
+            {
+                label: 'Mute Audio (Toggle)',
+                accelerator: 'CmdOrCtrl+M',
+                click: () => {
+                    mainWindow.webContents.audioMuted = !mainWindow.webContents.audioMuted;
+                    mainWindow.webContents.send('muted', mainWindow.webContents.audioMuted);
+                }
+            },
+            {
+                label: 'Log Out',
+                click: () => createLoadingScreen()
+            },
+            {
+                label: 'Legacy',
+                click: () => loadPage('https://legacy.waddle.sunrise.games')
+            },
+            {
+                label: 'Modern',
+                click: () => loadPage('https://modern.waddle.sunrise.games')
+            }
             ]
         }));
     } else {
@@ -246,7 +246,7 @@ function createMenu() {
         }));
         fsmenu.append(new MenuItem({
             label: 'Mute Audio (Toggle)',
-			accelerator: 'CmdOrCtrl+M',
+            accelerator: 'CmdOrCtrl+M',
             click: () => {
                 mainWindow.webContents.audioMuted = !mainWindow.webContents.audioMuted;
                 mainWindow.webContents.send('muted', mainWindow.webContents.audioMuted);
@@ -265,7 +265,7 @@ function createMenu() {
             click: () => createLoadingScreen()
         }));
     }
-	return fsmenu
+    return fsmenu
 }
 
 /**
@@ -274,25 +274,25 @@ function createMenu() {
  */
 let mainWindow;
 function createWindow() {
-  // Create the browser mainWindow.
-  mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 720,
-    useContentSize: true,
-    show: false,
-    title: 'Sunrise Games',
-    icon: __dirname + '/assets/icon.ico',
-    webPreferences: {
-	  preload: path.join(__dirname, './preload.js'),
-      plugins: true,
-      nodeIntegration: false,
-	  webSecurity: false,
-	  contextIsolation: false
-    }
-  })
-  registerKeys()
-  Menu.setApplicationMenu(createMenu());
-  mainWindow.loadURL('http://localhost/as3/');
+    // Create the browser mainWindow.
+    mainWindow = new BrowserWindow({
+        width: 1280,
+        height: 720,
+        useContentSize: true,
+        show: false,
+        title: 'Sunrise Games',
+        icon: __dirname + '/assets/icon.ico',
+        webPreferences: {
+            preload: path.join(__dirname, './preload.js'),
+            plugins: true,
+            nodeIntegration: false,
+            webSecurity: false,
+            contextIsolation: false
+        }
+    })
+    registerKeys()
+    Menu.setApplicationMenu(createMenu());
+    mainWindow.loadURL('http://localhost/as3/');
 }
 
 function isLegacyPenguin() {
@@ -312,9 +312,9 @@ function isLegacyPenguin() {
  * @returns {void}
  */
 function registerKeys() {
-	globalShortcut.register('CmdOrCtrl+Shift+I', () => {
-		mainWindow.webContents.openDevTools();
-	})
+    globalShortcut.register('CmdOrCtrl+Shift+I', () => {
+        mainWindow.webContents.openDevTools();
+    })
 }
 
 /**
@@ -337,11 +337,11 @@ autoUpdater.on('update-downloaded', () => {
  */
 
 app.whenReady().then(() => {
-  createLoadingScreen()
-  autoUpdater.checkForUpdatesAndNotify();
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createLoadingScreen()
-  })
+    createLoadingScreen()
+    autoUpdater.checkForUpdatesAndNotify();
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) createLoadingScreen()
+    })
 })
 
 /**
@@ -350,8 +350,8 @@ app.whenReady().then(() => {
  */
 
 app.on('window-all-closed', () => {
-	if(updateAv) autoUpdater.quitAndInstall();
-	if(process.platform !== 'darwin') app.quit();
+    if (updateAv) autoUpdater.quitAndInstall();
+    if (process.platform !== 'darwin') app.quit();
 });
 
 /**
@@ -361,32 +361,32 @@ app.on('window-all-closed', () => {
  */
 
 autoUpdater.on('update-available', (updateInfo) => {
-	switch (process.platform) {
-	case 'win32':
-	    dialog.showMessageBox({
-		  type: 'info',
-		  buttons: ['Ok'],
-		  title: 'Update Available',
-		  message: 'There is a new version available (v' + updateInfo.version + '). It will be installed when the app closes.'
-	    });
-	    break
-	case 'darwin':
-	    dialog.showMessageBox({
-		  type: 'info',
-		  buttons: ['Ok'],
-		  title: 'Update Available',
-		  message: 'There is a new version available (v' + updateInfo.version + '). Please go install it manually from the website.'
-	    });
-	    break
-	case 'linux':
-	    dialog.showMessageBox({
-		  type: 'info',
-		  buttons: ['Ok'],
-		  title: 'Update Available',
-		  message: 'There is a new version available (v' + updateInfo.version + '). Auto-update has not been tested on this OS, so if after relaunching app this appears again, please go install it manually.'
-	    });
-	    break
-	}
+    switch (process.platform) {
+        case 'win32':
+            dialog.showMessageBox({
+                type: 'info',
+                buttons: ['Ok'],
+                title: 'Update Available',
+                message: 'There is a new version available (v' + updateInfo.version + '). It will be installed when the app closes.'
+            });
+            break
+        case 'darwin':
+            dialog.showMessageBox({
+                type: 'info',
+                buttons: ['Ok'],
+                title: 'Update Available',
+                message: 'There is a new version available (v' + updateInfo.version + '). Please go install it manually from the website.'
+            });
+            break
+        case 'linux':
+            dialog.showMessageBox({
+                type: 'info',
+                buttons: ['Ok'],
+                title: 'Update Available',
+                message: 'There is a new version available (v' + updateInfo.version + '). Auto-update has not been tested on this OS, so if after relaunching app this appears again, please go install it manually.'
+            });
+            break
+    }
 });
 
 /**
@@ -398,11 +398,11 @@ autoUpdater.on('update-available', (updateInfo) => {
  */
 
 ipcMain.on('load:data', (event, mute, theme) => {
-	muted = (mute === 'true');
-	nativeTheme.themeSource = theme;
-	mainWindow.webContents.audioMuted = muted;
+    muted = (mute === 'true');
+    nativeTheme.themeSource = theme;
+    mainWindow.webContents.audioMuted = muted;
 
-	mainWindow.webContents.send('theme', nativeTheme.themeSource);
+    mainWindow.webContents.send('theme', nativeTheme.themeSource);
 });
 
 /**
@@ -410,6 +410,6 @@ ipcMain.on('load:data', (event, mute, theme) => {
  */
 
 // Discord Rich Presence
-ipcMain.on('setDiscordZone', function(event, zoneId, penguinName) {
+ipcMain.on('setDiscordZone', function (event, zoneId, penguinName) {
     setupZonePresence(zoneId, penguinName);
 });
