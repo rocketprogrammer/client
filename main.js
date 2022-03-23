@@ -116,7 +116,8 @@ function setupZonePresence(zoneId, penguinName) {
         952: 'Dance Contest',
         900: 'Astro Barrier',
         909: 'Thin Ice',
-        320: 'Dojo'
+        320: 'Dojo',
+        120: isLegacyPenguin() ? 'Gift Shop' : 'Clothes Shop',
     }
 
     var roomIdToImage = {
@@ -128,7 +129,8 @@ function setupZonePresence(zoneId, penguinName) {
         952: 'dance_contest_logo',
         900: 'astrobarrierstartscreennewfont',
         909: 'thin_ice',
-        320: isLegacyPenguin() ? 'dojo_2009' : 'dojo_2013'
+        320: isLegacyPenguin() ? 'dojo_2009' : 'dojo_2013',
+        130: isLegacyPenguin() ? 'gift_shop_2009': 'clothes_shop'
     }
 
     rpc.setActivity({
