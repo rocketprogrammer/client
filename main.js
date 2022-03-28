@@ -117,7 +117,7 @@ function setupZonePresence(zoneId, penguinName) {
         900: 'Astro Barrier',
         909: 'Thin Ice',
         320: 'Dojo',
-        120: isLegacyPenguin() ? 'Gift Shop' : 'Clothes Shop',
+        130: isLegacyPenguin() ? 'Gift Shop' : 'Clothes Shop'
     }
 
     var roomIdToImage = {
