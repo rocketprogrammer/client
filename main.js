@@ -122,7 +122,7 @@ function setupZonePresence(zoneId, penguinName) {
 
     var roomIdToImage = {
         100: isLegacyPenguin() ? 'town_2006_ice_rink' : 'town_2012_ice_rink',
-        110: 'coffee_shop_as2',
+        110: isLegacyPenguin() ? 'coffee_shop_as2' : 'coffee_shop_2012',
         111: isLegacyPenguin() ? 'book_room_2005' : 'book_room_2012',
         120: isLegacyPenguin() ? 'night_club_as2' : 'dance_club_july_2014',
         121: isLegacyPenguin() ? 'dance_lounge_2006' : 'arcade',
