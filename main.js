@@ -120,7 +120,9 @@ function setupZonePresence(zoneId, penguinName) {
         130: isLegacyPenguin() ? 'Gift Shop' : 'Clothes Shop',
         959: 'Smoothie Smash',
         300: 'The Plaza',
-        310: 'Pet Shop'
+        310: 'Pet Shop',
+        955: 'Puffle Launch',
+        956: 'Bits & Bolts'
     }
 
     var roomIdToImage = {
@@ -136,7 +138,9 @@ function setupZonePresence(zoneId, penguinName) {
         130: isLegacyPenguin() ? 'gift_shop_2009': 'clothes_shop',
         959: 'ss_game_menu',
         300: isLegacyPenguin() ? 'plaza_before_2012' : 'plaza08july2015',
-        310: isLegacyPenguin() ? 'pet_shop_2010' : 'pet_shop_2014'
+        310: isLegacyPenguin() ? 'pet_shop_2010' : 'pet_shop_2014',
+        955: 'puffle_launch',
+        956: 'bits-and-bolts'
     }
 
     rpc.setActivity({
@@ -301,8 +305,8 @@ function createWindow() {
     registerKeys()
     Menu.setApplicationMenu(createMenu());
     // mainWindow.loadURL('http://localhost/');
-    // mainWindow.loadURL('http://localhost/as3/');
-    mainWindow.loadURL('https://modern.waddle.sunrise.games');
+    mainWindow.loadURL('http://localhost/as3/');
+    // mainWindow.loadURL('https://modern.waddle.sunrise.games');
 }
 
 function isLegacyPenguin() {
