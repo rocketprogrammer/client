@@ -122,7 +122,9 @@ function setupZonePresence(zoneId, penguinName) {
         300: 'The Plaza',
         310: 'Pet Shop',
         955: 'Puffle Launch',
-        956: 'Bits & Bolts'
+        956: 'Bits & Bolts',
+        998: 'Card Jitsu',
+        951: 'Sensei'
     }
 
     var roomIdToImage = {
@@ -140,7 +142,9 @@ function setupZonePresence(zoneId, penguinName) {
         300: isLegacyPenguin() ? 'plaza_before_2012' : 'plaza08july2015',
         310: isLegacyPenguin() ? 'pet_shop_2010' : 'pet_shop_2014',
         955: 'puffle_launch',
-        956: 'bits-and-bolts'
+        956: 'bits-and-bolts',
+        998: 'card_jitsu_deck',
+        951: 'sensei'
     }
 
     rpc.setActivity({
@@ -304,8 +308,8 @@ function createWindow() {
     })
     registerKeys()
     Menu.setApplicationMenu(createMenu());
-    // mainWindow.loadURL('http://localhost/');
-    mainWindow.loadURL('http://localhost/as3/');
+    mainWindow.loadURL('http://localhost/');
+    // mainWindow.loadURL('http://localhost/as3/');
     // mainWindow.loadURL('https://modern.waddle.sunrise.games');
 }
 
